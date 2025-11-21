@@ -1,6 +1,6 @@
 import pytest
 from sample_code import add, subtract, multiply, divide
-
+# solving mathematical equations
 def test_add():
     assert add(2, 3) == 5
     assert add(-1, 1) == 0

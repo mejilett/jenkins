@@ -7,7 +7,8 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git url: 'https://github.com/mejilett/jenkins'
+		git url: 'https://github.com/mejilett/jenkins',
+		branch: 'main'
             }
         }
         stage('Build') {
