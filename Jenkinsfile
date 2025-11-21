@@ -27,13 +27,16 @@ pipeline {
 	post {
 		always {
 			script {
-			def message = "Build #${BUILD_NUMBER} finished. ${currentBuild.currentResult}"
+			def status = currentBuild.currentResult
+			def message = "Build #${BUILD_NUMBER} finished. Status: ${status}"
+			node {
 			sh """
 				curl -X POST 'https://webexapis.com/v1/messages' \
 				-H 'Authorization: Bearer ${env.WEBEX_TOKEN}' \
 				-H 'Content-Type: application/json' \
 				-d '{"roomId":"${env.WEBEX_ROOM_ID}", "text": "${message}"}'
 			"""
+			}
 			}
 		}
 	}
